@@ -11,44 +11,55 @@
     the div with edited text appears instead of textarea. Don’t forget to turn off default settings for these
     hotkey combinations. -->
 
-    <!-- <div id="textBlock">
-        Hello from Beetroot Academy!
-        <br>
-        <small>(Press Ctrl+E to edit me.) </small>
+    <!-- <div
+      id="textBlock"
+      style="
+        font-size: 24px;
+        border: 1px solid black;
+        width: 300px;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+      "
+    >
+      <b>Hello from Beetroot Academy!</b>
+      <br />
+      <small><small>(Press Ctrl+E to edit me.)</small> </small>
     </div>
 
-    <textarea id="textArea" style="display: none; width: 400px; height: 150px;"></textarea>
+    <textarea
+      id="textArea"
+      style="display: none; width: 400px; height: 150px"
+    ></textarea>
 
     <script>
-        let textBlock = document.getElementById("textBlock");
-        let textArea = document.getElementById("textArea");
+      let textBlock = document.getElementById("textBlock");
+      let textArea = document.getElementById("textArea");
 
-        textBlock.style.display = "block";
-        textArea.style.display = "none";
+      textBlock.style.display = "block";
+      textArea.style.display = "none";
 
-        document.addEventListener("keydown", function(event)
-    {
-        if(event.ctrlKey && (event.key === "e" || event.key === "E")){
-            event.preventDefault();
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && (event.key === "e" || event.key === "E")) {
+          event.preventDefault();
 
-            textArea.value = textBlock.innerText;
+          textArea.value = textBlock.innerText;
 
-            textBlock.style.display = "none";
-            textArea.style.display = "block";
+          textBlock.style.display = "none";
+          textArea.style.display = "block";
 
-            textArea.focus();
+          textArea.focus();
         }
 
-        if(event.ctrlKey && (event.key === "s" || event.key === "S"))
-        {
-            event.preventDefault();
+        if (event.ctrlKey && (event.key === "s" || event.key === "S")) {
+          event.preventDefault();
 
-            textBlock.innerText = textArea.value;
-            
-            textBlock.style.display = "block";
-            textArea.style.display = "none";
+          textBlock.innerText = textArea.value;
+
+          textBlock.style.display = "block";
+          textArea.style.display = "none";
         }
-    });
+      });
     </script> -->
 
     <!-- 2.Create an html-page with a large table. When clicking the column heading, 
@@ -208,6 +219,6 @@
       document.addEventListener("mouseup", function () {
         isResizing = false;
       });
-    </script>
+    </script> 
   </body>
 </html>
