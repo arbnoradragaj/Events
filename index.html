@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <!-- 1.Create an html-page for displaying and editing text. When opening the page, the text should be displayed 
+    with div tag. When clicking Ctrl+E, textarea appears instead of div and can be edited. When pressing Ctrl+S, 
+    the div with edited text appears instead of textarea. Don’t forget to turn off default settings for these
+    hotkey combinations. -->
+
+    <!-- <div id="textBlock">
+        Hello from Beetroot Academy!
+        <br>
+        <small>(Press Ctrl+E to edit me.) </small>
+    </div>
+
+    <textarea id="textArea" style="display: none; width: 400px; height: 150px;"></textarea>
+
+    <script>
+        let textBlock = document.getElementById("textBlock");
+        let textArea = document.getElementById("textArea");
+
+        textBlock.style.display = "block";
+        textArea.style.display = "none";
+
+        document.addEventListener("keydown", function(event)
+    {
+        if(event.ctrlKey && (event.key === "e" || event.key === "E")){
+            event.preventDefault();
+
+            textArea.value = textBlock.innerText;
+
+            textBlock.style.display = "none";
+            textArea.style.display = "block";
+
+            textArea.focus();
+        }
+
+        if(event.ctrlKey && (event.key === "s" || event.key === "S"))
+        {
+            event.preventDefault();
+
+            textBlock.innerText = textArea.value;
+            
+            textBlock.style.display = "block";
+            textArea.style.display = "none";
+        }
+    });
+    </script> -->
+
+    <!-- 2.Create an html-page with a large table. When clicking the column heading, 
+    it is necessary to sort data of that column. Note that numerical values should
+     be sorted as numbers, not as strings. -->
+
+    <!-- <table id="table" border="1">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Name</th>
+          <th onclick="sortTable(1)">Age</th>
+          <th onclick="sortTable(2)">City</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Fistek</td>
+          <td>20</td>
+          <td>Prishtine</td>
+        </tr>
+        <tr>
+          <td>Filan</td>
+          <td>22</td>
+          <td>Prishtine</td>
+        </tr>
+        <tr>
+          <td>Student 3</td>
+          <td>18</td>
+          <td>Mitrovice</td>
+        </tr>
+        <tr>
+          <td>Student 4</td>
+          <td>21</td>
+          <td>Mitrovice</td>
+        </tr>
+        <tr>
+          <td>Student 5</td>
+          <td>20</td>
+          <td>Prishtine</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      function sortTable(colIndex) {
+        let table = document.getElementById("table");
+        let tbody = document.getElementsByTagName("tbody")[0];
+        let rows = tbody.getElementsByTagName("tr");
+
+        let array = [];
+
+        for (let i = 0; i < rows.length; i++) {
+          array[array.length] = rows[i];
+        }
+
+        array.sort(function (a, b) {
+          let cellA = a.getElementsByTagName("td")[colIndex].innerText;
+          let cellB = b.getElementsByTagName("td")[colIndex].innerText;
+
+          let numA = Number(cellA);
+          let numB = Number(cellB);
+
+          if (!isNaN(numA) && !isNaN(numB)) {
+            return numA - numB;
+          } else {
+            if (cellA > cellB) return 1;
+            if (cellA < cellB) return -1;
+            return 0;
+          }
+        });
+
+        tbody.innerHTML = "";
+
+        for (let i = 0; i < array.length; i++) {
+          tbody.appendChild(array[i]);
+        }
+      }
+    </script> -->
+
+    <!-- 3.Create an html-page with a text block in a frame. 
+    Execute the possibility to change the size of the block
+     when holding the mouse cursor in the bottom right corner and pull it further. -->
+
+    <div
+      id="box"
+      style="
+        font-size: 24px;
+        border: 1px solid black;
+        width: 300px;
+        height: 150px;
+        padding: 10px;
+        position: relative;
+      "
+    >
+      <b>Hello form Beetroot Academy!</b>
+      <br />
+      <small
+        ><small>
+          <small
+            >(Drag the small square in the bottom right corner)</small
+          ></small
+        ></small
+      >
+      <div
+        id="resizer"
+        style="
+          width: 15px;
+          height: 15px;
+          background: gray;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          cursor: se-resize;
+        "
+      ></div>
+    </div>
+
+    <script>
+      let box = document.getElementById("box");
+      let resizer = document.getElementById("resizer");
+
+      let isResizing = false;
+
+      let startX;
+      let startY;
+      let startWidth;
+      let startHeight;
+
+      resizer.addEventListener("mousedown", function (event) {
+        isResizing = true;
+
+        startX = event.clientX;
+        startY = event.clientY;
+
+        startWidth = box.offsetWidth;
+        startHeight = box.offsetHeight;
+
+        event.preventDefault();
+      });
+
+      document.addEventListener("mousemove", function (event) {
+        if (!isResizing) {
+          return;
+        }
+
+        let diffX = event.clientX - startX;
+        let diffY = event.clientY - startY;
+
+        let newWidth = startWidth + diffX;
+        let newHeight = startHeight + diffY;
+
+        box.style.width = newWidth + "px";
+        box.style.height = newHeight + "px";
+      });
+
+      document.addEventListener("mouseup", function () {
+        isResizing = false;
+      });
+    </script>
+  </body>
+</html>
